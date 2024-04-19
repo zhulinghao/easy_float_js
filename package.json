@@ -1,5 +1,5 @@
 {
-  "name": "easy-float-js",
+  "name": "easy-float",
   "version": "1.0.0",
   "description": "Easy Float",
   "main": "./src/index.js",
@@ -13,5 +13,13 @@
     "button"
   ],
   "author": "zhulinghao",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhulinghao/easy_float_js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zhulinghao/easy_float_js/issues"
+  },
+  "homepage": "https://github.com/zhulinghao/easy_float_js#readme"
 }
