@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .btn {
+      background-color: #000;
+      border-radius: 50%;
+      line-height: 100px;
+      text-align: center;
+      height: 100px;
+      width: 100px;
+      cursor: grab;
+      color: #fff;
+    }
+
+    .btn:active {
+      cursor: grabbing;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <script type="module">
+    import EasyFloat from '../src/index.js';
+
+    window.onload = () => {
+      const easyFloat = new EasyFloat();
+      const container = document.querySelector('body');
+      const targetBtn = document.querySelector('.btn');
+      easyFloat.init({
+        container,
+        targetBtn,
+        padding: 10,
+        initBottom: 10,
+        initLeft: 10,
+        fadeOutEnable: true,
+        fadeOutTime: 1000,
+      });
+
+    }
+  </script>
+
+  <div class="btn">easyFloat</div>
+</body>
+
+</html>
