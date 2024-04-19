@@ -8,7 +8,10 @@ import EasyFloat from 'easy-float';
 const container = document.querySelector('body');
 const targetBtn = document.querySelector('.btn');
 
-const options = {
+const easyFloat = new EasyFloat();
+const container = document.querySelector('body');
+const targetBtn = document.querySelector('.btn');
+easyFloat.init({
   container,
   targetBtn,
   padding: 10,
@@ -16,9 +19,11 @@ const options = {
   initLeft: 10,
   fadeOutEnable: true,
   fadeOutTime: 1000,
-};
-
-easyFloat.init();
+});
+targetBtn.addEventListener('click', () => {
+  if (!easyFloat.canClick) return;
+  alert('do click');
+});
 ```
 
 # options

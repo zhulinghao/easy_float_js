@@ -14,6 +14,9 @@ export default class EasyFloat {
     this.fadeOutTime = 4000;
     /** @type {boolean} */
     this.fadeOutEnable = false;
+    this.totalMovementX = 0;
+    this.totalMovementY = 0;
+    this.canClick = true;
     this.timer = null;
     this.fadeOutTimer = null;
     this.padding = 0;
@@ -115,6 +118,7 @@ export default class EasyFloat {
     this.targetBtn.style.top = targetTop + 'px';
     this.timer = setTimeout(() => {
       this.targetBtn.style.transition = '';
+      this.canClick = true;
     }, 300);
 
     if (this.fadeOutEnable) {
@@ -179,11 +183,12 @@ export default class EasyFloat {
     }
 
     this.targetBtn.addEventListener(startEvent, (e) => {
-      e.preventDefault();
       clearTimeout(this.timer);
       clearTimeout(this.fadeOutTimer);
 
       this.dragStart = true;
+      this.totalMovementX = 0;
+      this.totalMovementY = 0;
 
       if (startEvent === 'mousedown') {
         this.initialX = e.clientX;
@@ -201,6 +206,9 @@ export default class EasyFloat {
       if (moveEvent === 'mousemove') {
         const movementX = e.movementX;
         const movementY = e.movementY;
+
+        this.totalMovementX += movementX;
+        this.totalMovementY += movementY;
         const newLeft = this.targetBtn.offsetLeft + movementX;
         const newTop = this.targetBtn.offsetTop + movementY;
         this.targetBtn.style.left = newLeft + 'px';
@@ -215,6 +223,12 @@ export default class EasyFloat {
         this.targetBtn.style.top = newTop + 'px';
         this.initialX = touch.clientX;
         this.initialY = touch.clientY;
+
+        this.totalMovementX += movementX;
+        this.totalMovementY += movementY;
+      }
+      if (Math.abs(this.totalMovementY) >= 5 || Math.abs(this.totalMovementX) >= 5) {
+        this.canClick = false;
       }
     });
 
@@ -222,5 +236,9 @@ export default class EasyFloat {
     this.container.addEventListener(cancelEvent, this.handleEndBind);
 
     window.addEventListener('resize', this.computePositionBind);
+  }
+
+  clearListener() {
+    window.removeEventListener('resize', this.computePositionBind);
   }
 }

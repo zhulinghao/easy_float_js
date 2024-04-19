@@ -53,8 +53,12 @@
         fadeOutEnable: true,
         fadeOutTime: 1000,
       });
-
+      targetBtn.addEventListener('click', () => {
+        if (!easyFloat.canClick) return;
+        alert('do click');
+      });
     }
+
   </script>
 
   <div class="btn">easyFloat</div>
