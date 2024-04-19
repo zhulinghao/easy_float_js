@@ -1,10 +1,10 @@
 # Install
 
-`npm i easy-float-js`
+`npm i easy-float`
 
 example:
 ```js
-import EasyFloat from 'easy-float-js';
+import EasyFloat from 'easy-float';
 const container = document.querySelector('body');
 const targetBtn = document.querySelector('.btn');
 
